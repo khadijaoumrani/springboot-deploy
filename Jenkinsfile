@@ -8,7 +8,7 @@ node {
             // for display purposes
             // Get some code from a GitHub repository
             git url: 'https://github.com/khadijaoumrani/springboot-deploy.git',
-                credentialsId: 'springdeploy-user',
+              
                 branch: 'main'
          }
           stage('Build docker') {
