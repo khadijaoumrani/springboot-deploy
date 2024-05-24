@@ -9,6 +9,12 @@ node {
             git url: 'https://github.com/khadijaoumrani/springboot-deploy.git', branch: 'main'
         }
 
+        stage('Verify Dockerfile') {
+            if (!fileExists('Dockerfile')) {
+                error "Dockerfile not found in workspace"
+            }
+        }
+
         stage('Build docker') {
             dockerImage = docker.build(dockerImageTag)
         }
