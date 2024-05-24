@@ -1,5 +1,5 @@
 node {
-    def WORKSPACE = "C:\Users\info\Desktop\dev\springboot-deploy"
+    def WORKSPACE = "C:\Users\pc\Documents\GitProject\springboot-deploy"
     def dockerImageTag = "springboot-deploy${env.BUILD_NUMBER}"
 
     try{
