@@ -10,7 +10,7 @@ node {
         }
 
         stage('Verify Dockerfile') {
-            if (!fileExists('DockerFile')) {
+            if (!fileExists('Dockerfile')) {
                 error "Dockerfile not found in workspace"
             }
         }
