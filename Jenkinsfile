@@ -9,7 +9,7 @@ node {
         }
 
         stage('Clone Repo') {
-            git url: 'https://github.com/khadijaoumrani/springboot-deploy.git', branch: 'main'
+            git url: 'https://github.com/khadijaoumrani/springboot-deploy.git', branch: 'master'
         }
 
         stage('List files') {
