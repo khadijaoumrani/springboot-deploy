@@ -30,5 +30,14 @@ pipeline {
                 }
             }
         }
+        
+        stage('Run Container') {
+            steps {
+                script {
+                    // Run Docker container and map port 8083
+                    docker.image(DOCKER_IMAGE).run('-p 8083:8083')
+                }
+            }
+        }
     }
 }
