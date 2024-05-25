@@ -31,7 +31,7 @@ node {
 
           echo "Docker Image Tag Name: ${dockerImageTag}"
           bat script: '''
-             docker run --name springboot-deploy -d -p 8081:8081 ${dockerImageTag.toLowerCase()}
+             docker run --name springboot-deploy -d -p 8081:8081 ${dockerImageTag}
           '''
         }
 
