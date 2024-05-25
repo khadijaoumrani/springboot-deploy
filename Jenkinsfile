@@ -35,7 +35,7 @@ pipeline {
             steps {
                 script {
                     // Exécuter le conteneur Docker et mapper le port 8083 sur un port disponible de la machine hôte
-                    docker.image(DOCKER_IMAGE).run('-p 8083:8083')
+                    docker.image(DOCKER_IMAGE).run()
                 }
             }
         }
