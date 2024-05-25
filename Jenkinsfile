@@ -17,7 +17,7 @@ node {
         }
 
         stage('Verify Dockerfile') {
-            if (!fileExists('Dockerfile')) {
+            if (!fileExists('springboot-deplo/Dockerfile')) {
                 error "Dockerfile not found in workspace"
             }
         }
