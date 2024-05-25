@@ -35,7 +35,7 @@ pipeline {
             steps {
                 script {
                     // Run Docker container and map port 8083
-                    docker.image(DOCKER_IMAGE).run('-p 8080:8083')
+                    docker.image(DOCKER_IMAGE).run('-p 8082:8083')
                 }
             }
         }
