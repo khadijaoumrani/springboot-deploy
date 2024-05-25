@@ -15,7 +15,7 @@ node {
         stage('List files') {
             bat 'dir'  // List files to verify Dockerfile presence
         }
-/*
+
         stage('Verify Dockerfile') {
             if (!fileExists('Dockerfile')) {
                 error "Dockerfile not found in workspace"
@@ -33,7 +33,7 @@ node {
                 docker rm springboot-deploy || true
                 docker run --name springboot-deploy -d -p 8081:8081 springboot-deploy:${env.BUILD_NUMBER}
             '''
-        }*/
+        }
     } catch(e) {
         currentBuild.result = "FAILED"
         throw e
