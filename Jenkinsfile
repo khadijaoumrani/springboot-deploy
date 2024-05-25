@@ -1,11 +1,11 @@
 node {
     def WORKSPACE = "C:/Users/pc/Document/GitProject/springboot-deploy"
-    def dockerImageTag = "springboot-deploy:${env.BUILD_NUMBER}"
+    def dockerImageTag = "springboot-deploy:v1.0.0" // Version spécifique de votre choix
     def dockerImage = null
 
     try {
         stage('Cleanup') {
-            deleteDir()  // Clean the workspace
+            deleteDir()  // Nettoyer l'espace de travail
         }
 
         stage('Clone Repo') {
@@ -13,14 +13,13 @@ node {
         }
 
         stage('List files') {
-            bat 'dir'  // List files to verify Dockerfile presence
+            bat 'dir'  // Lister les fichiers pour vérifier la présence du Dockerfile
         }
 
         stage('Verify Dockerfile') {
             if (!fileExists('Dockerfile')) {
-            error "Dockerfile not found in workspace"
-        }
-
+                error "Dockerfile non trouvé dans l'espace de travail"
+            }
         }
 
         stage('Build docker') {
@@ -28,11 +27,11 @@ node {
         }
 
         stage('Deploy docker') {
-            echo "Docker Image Tag Name: ${dockerImageTag}"
+            echo "Nom de l'image Docker: ${dockerImageTag}"
             bat script: '''
                 docker stop springboot-deploy || true
                 docker rm springboot-deploy || true
-                docker run --name springboot-deploy -d -p 8081:8081 springboot-deploy:${env.BUILD_NUMBER}
+                docker run --name springboot-deploy -d -p 8081:8081 ${dockerImageTag}
             '''
         }
     } catch(e) {
