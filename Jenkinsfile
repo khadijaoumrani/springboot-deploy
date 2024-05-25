@@ -27,13 +27,14 @@ node {
             dockerImage = docker.build(dockerImageTag)
         }
 
-        stage('Deploy docker') {
+       stage('Deploy docker') {
 
-          echo "Docker Image Tag Name: ${dockerImageTag}"
-          bat script: '''
-             docker run --name springboot-deploy -d -p 8081:8081 ${dockerImageTag}
-          '''
-        }
+           echo "Docker Image Tag Name: ${dockerImageTag}"
+        
+           bat script: '''
+            docker run --name springboot-deploy -d -p 8081:8081 ${dockerImageTag.toLowerCase()}
+           '''
+}
 
     } catch(e) {
         currentBuild.result = "FAILED"
