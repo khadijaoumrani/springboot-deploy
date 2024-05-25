@@ -16,6 +16,12 @@ node {
             bat 'dir'  // Lister les fichiers pour vérifier la présence du Dockerfile
         }
 
+        stage('Verify Dockerfile') {
+            if (!fileExists('Dockerfile')) {
+                error "Dockerfile non trouvé dans l'espace de travail"
+            }
+        }
+
         stage('Build docker') {
             dockerImage = docker.build(dockerImageTag)
         }
