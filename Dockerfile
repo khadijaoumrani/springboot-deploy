@@ -1,5 +1,5 @@
 # Build Stage
-FROM maven:3.6.3-openjdk-8 AS build
+FROM maven:3.6.3-openjdk-11 AS build
 
 WORKDIR /opt/app
 
