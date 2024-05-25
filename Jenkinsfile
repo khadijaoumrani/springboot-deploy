@@ -46,7 +46,7 @@ pipeline {
                         echo "No existing container to remove"
                     }
                     // Exécuter le nouveau conteneur Docker et mapper le port 8083
-                    container.run('-d --name my_container -p 8083:8083')
+                    container.run('-d --name my_container -p 8082:8082')
                 }
             }
         }
