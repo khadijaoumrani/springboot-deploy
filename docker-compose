@@ -1,6 +1,0 @@
-version: '3'
-services:
-  mavenapp:
-    image: imane02/imageprojet:latest
-    ports:
-      - "8083:8083"
