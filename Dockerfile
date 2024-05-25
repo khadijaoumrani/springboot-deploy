@@ -1,5 +1,5 @@
 # Build Stage
-FROM maven:3.9.6-openjdk-17 AS build
+FROM maven:3.9.6-openjdk-11 AS build
 
 WORKDIR /opt/app
 
@@ -7,7 +7,7 @@ COPY ./ /opt/app
 RUN mvn clean install -DskipTests
 
 # Docker Build Stage
-FROM adoptopenjdk/openjdk17:alpine-slim
+FROM adoptopenjdk/openjdk11:alpine-slim
 
 COPY --from=build /opt/app/target/*.jar app.jar
 
