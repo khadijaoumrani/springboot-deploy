@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     environment {
-        DOCKER_CREDENTIALS = 'docker-hub-credentials'
+        DOCKER_CREDENTIALS = 'd0612690-ab25-45ce-bcdd-68408a05156f'
         DOCKER_IMAGE = 'imane02/imageprojet'
     }
     
