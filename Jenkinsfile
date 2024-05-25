@@ -27,14 +27,14 @@ pipeline {
                 script {
                     try {
                         // Attempt to remove any existing container with the same name
-                        bat 'docker rm -f imageprojet || true'
+                        sh 'docker rm -f imageprojet || true'
                     } catch (Exception e) {
                         echo 'No existing container to remove'
                     }
                     // Run the container with restart policy set to always
-                    bat 'docker run -d --name imageprojet --restart always -p 8082:8082 imane02/imageprojet:latest'
+                    sh 'docker run -d --name imageprojet --restart always -p 8082:8082 imane02/imageprojet:latest'
                 }
             }
         }
-
+    }
 }
