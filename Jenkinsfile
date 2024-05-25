@@ -36,5 +36,15 @@ pipeline {
                 }
             }
         }
+        stage('Watch for File Changes') {
+            steps {
+
+                 watchForChanges('src/main/java/com/example/springbootdeploy/SpringbootDeployApplication.java') {
+                     if (changesDetected()) {
+                        bat 'docker restart imageprojet'
+                   }
+                 }
+            }
+        }
     }
 }
