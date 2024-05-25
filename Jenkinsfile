@@ -35,19 +35,18 @@ pipeline {
             }
         }
 
-        stage('Deploy Application') {
+        stage('Run Container') {
             steps {
                 script {
-                    sh 'docker-compose pull mavenapp'
-                    sh 'docker-compose up -d mavenapp'
-                }
-            }
-        }
-
-        stage('Restart Application') {
-            steps {
-                script {
-                    sh 'docker-compose restart mavenapp'
+                    def container = docker.image(DOCKER_IMAGE)
+                    try {
+                        // Arrêtez et supprimez le conteneur existant s'il existe
+                        sh "docker rm -f my_container || true"
+                    } catch (Exception e) {
+                        echo "No existing container to remove"
+                    }
+                    // Exécuter le nouveau conteneur Docker et mapper le port 8083
+                    container.run('-d --name my_container -p 8082:8082')
                 }
             }
         }
