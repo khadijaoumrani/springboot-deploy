@@ -4,9 +4,16 @@ node {
     def dockerImage = null
 
     try {
-        // notifyBuild('STARTED')
+        stage('Cleanup') {
+            deleteDir()  // Clean the workspace
+        }
+
         stage('Clone Repo') {
             git url: 'https://github.com/khadijaoumrani/springboot-deploy.git', branch: 'main'
+        }
+
+        stage('List files') {
+            bat 'dir'  // List files to verify Dockerfile presence
         }
 
         stage('Verify Dockerfile') {
@@ -28,10 +35,10 @@ node {
             '''
         }
     } catch(e) {
-        // currentBuild.result = "FAILED"
+        currentBuild.result = "FAILED"
         throw e
     } finally {
-        // notifyBuild(currentBuild.result)
+        notifyBuild(currentBuild.result)
     }
 }
 
