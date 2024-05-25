@@ -13,7 +13,7 @@ public class SpringbootDeployApplication {
 	}
 	@GetMapping("/")
 	public String home(){
-	return "welcome imannaaaaa!!";
+	return "welcome amouuuuna!!";
 	}
 
 }
