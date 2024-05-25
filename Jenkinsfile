@@ -16,8 +16,8 @@ node {
             bat 'dir'  // List files to verify Dockerfile presence
         }
 
-        stage('Verify /springboot-deploy/springboot-deploy/Dockerfile') {
-            if (!fileExists('/springboot-deploy/springboot-deploy/Dockerfile')) {
+        stage('Verify Dockerfile') {
+            if (!fileExists('Dockerfile')) {
             error "Dockerfile not found in workspace"
         }
 
